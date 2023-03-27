@@ -4,6 +4,8 @@ function ReadElement(selector) {
 
 const addButton = ReadElement('#add-btn');
 const booksHTML = ReadElement('#books-holder');
+const tittleInput = ReadElement('#book-tittle-input');
+const authInput = ReadElement('#book-auth-input');
 
 
 
@@ -19,11 +21,20 @@ let books = [
     new Book("Book Number 3","Auth 3"),
 ];
 
-function add_book(tittle,author){
+function add_book(){
+    let tittle = tittleInput.value;
+    let author = authInput.value;
+    console.log("add book called");
+    console.log(tittle);
+    console.log(author);
+
     books.push(new Book(tittle,author));
+    buildBooks();   
+
 }
 
 function remove_book(tittle){
+    console.log(tittle);
     books = books.filter() 
     books = books.filter(Book => {
         return Book.tittle !== tittle;
@@ -34,6 +45,9 @@ function buildBooks() {
     <div class="single-book">
         <h4 class="speaker-name">${book.tittle}</h4>
         <i class="speaker-about">${book.author}</i>
+        <button class="rmv-btn" id="rmv-btn" type="button" onclick="remove_book(${book.tittle})">
+        remove
+        </button>
         <hr class="line">
     </div>
     </div>`).join('');

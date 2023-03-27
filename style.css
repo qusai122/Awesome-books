@@ -17,3 +17,16 @@ input {
 .add-btn {
   margin-top: 18px;
 }
+
+.single-book {
+  display: flex;
+  flex-direction: column;
+}
+
+.rmv-btn {
+  width: 164px;
+}
+
+.line {
+  width: 100%;
+}
