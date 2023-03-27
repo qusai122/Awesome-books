@@ -1,0 +1,3 @@
+npx eslint .
+npx hint .
+npx stylelint "**/*.{css,scss}"
