@@ -24,28 +24,37 @@ let books = [
 function add_book(){
     let tittle = tittleInput.value;
     let author = authInput.value;
-    console.log("add book called");
-    console.log(tittle);
-    console.log(author);
 
+    if(tittle =="" || author =="") return false;
     books.push(new Book(tittle,author));
-    buildBooks();   
+    buildBooks();
+
+    tittleInput.value = "" ;
+    authInput.value = "" ;
 
 }
 
-function remove_book(tittle){
-    console.log(tittle);
-    books = books.filter() 
-    books = books.filter(Book => {
-        return Book.tittle !== tittle;
-      });
+function remove_book(index){
+
+    /*books = books.filter(Book => {
+      return Book.tittle !== tittle;
+    });*/
+    
+    console.log("remove called");
+    console.log(index);
+
+    remove = books.splice(index, 1);
+    console.log(books);
+
+    buildBooks();
 }
+
 function buildBooks() {
     document.querySelector('#books-holder').innerHTML = books.map((book) => `
     <div class="single-book">
         <h4 class="speaker-name">${book.tittle}</h4>
         <i class="speaker-about">${book.author}</i>
-        <button class="rmv-btn" id="rmv-btn" type="button" onclick="remove_book(${book.tittle})">
+        <button class="rmv-btn" id="rmv-btn" type="button" onclick="remove_book(${books.indexOf(book)})"">
         remove
         </button>
         <hr class="line">
